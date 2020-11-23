@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "240587602507",
+    "firebase_url": "https://counterfeitdetection-6f6bb.firebaseio.com",
+    "project_id": "counterfeitdetection-6f6bb",
+    "storage_bucket": "counterfeitdetection-6f6bb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:240587602507:android:6a4ac79e82f527051c2bce",
+        "android_client_info": {
+          "package_name": "com.example.flutter_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "240587602507-1e1f21hup6puh6k2vmfg54aa64oovkhj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD7JElO5KuM2qZl6kZrUYr6lhdlc3CQr1E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "240587602507-1e1f21hup6puh6k2vmfg54aa64oovkhj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
