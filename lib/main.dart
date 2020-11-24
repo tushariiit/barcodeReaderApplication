@@ -45,7 +45,7 @@ class _MyHomePageState extends State<MyHomePage> {
     var mainAxisAlignment;
     return Scaffold(
       appBar: AppBar(
-        title: Text('Code Scanner'),
+        title: Text('BarCode Scanner'),
         centerTitle: true,
       ),
       body: new Center(
