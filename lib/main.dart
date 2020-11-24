@@ -24,6 +24,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   String barcode = "";
+
   Future scanCode() async {
     try {
       String barcode = await BarcodeScanner.scan();
@@ -41,22 +42,46 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    var mainAxisAlignment;
     return Scaffold(
       appBar: AppBar(
-        title: Text('Flutter Barcode Scan'),
+        title: Text('Code Scanner'),
+        centerTitle: true,
       ),
-      body: Center(
-        child: Column(
+      body: new Center(
+        child: new Column(
           mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            Text(barcode),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+              child: RaisedButton(
+                color: Colors.purple,
+                textColor: Colors.white,
+                splashColor: Colors.blueGrey,
+                onPressed: scanCode,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Icon(Icons.scanner, size: 40,),
+                    SizedBox(width: 10,),
+                    Column(
+                      children: <Widget>[
+                        Text('Camera Scan', style: TextStyle(fontSize: 20.0),),
+                        SizedBox(height: 2,),
+                        Text("Click here to Scan")
+                      ],
+                    )
+                  ],
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+              child: Text(barcode, textAlign: TextAlign.center,),
+            )
           ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: scanCode,
-        tooltip: 'Scan',
-        child: Icon(Icons.scanner),
       ),
     );
   }
