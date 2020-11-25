@@ -83,6 +83,44 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
+        drawer: Drawer(
+          // Add a ListView to the drawer. This ensures the user can scroll
+          // through the options in the drawer if there isn't enough vertical
+          // space to fit everything.
+          child: ListView(
+            // Important: Remove any padding from the ListView.
+            padding: EdgeInsets.zero,
+            children: <Widget>[
+              DrawerHeader(
+                child: Text('Hi User!!', style: TextStyle(fontSize: 40.0), textAlign: TextAlign.center,),
+                decoration: BoxDecoration(
+                  color: Colors.blue,
+                ),
+              ),
+              ListTile(
+                leading: Icon(Icons.home), title: Text("Home"),
+                onTap: () {
+                  // Update the state of the app.
+                  // ...
+                },
+              ),
+              ListTile(
+                leading: Icon(Icons.settings), title: Text("Settings"),
+                onTap: () {
+                  // Update the state of the app.
+                  // ...
+                },
+              ),
+              ListTile(
+                leading: Icon(Icons.contacts), title: Text("Contact Us"),
+                onTap: () {
+                  // Update the state of the app.
+                  // ...
+                },
+              ),
+            ],
+          ),
+        ),
     );
   }
 }
