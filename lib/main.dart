@@ -1,10 +1,15 @@
-import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:barcode_scan/barcode_scan.dart';
-import './drawer.dart';
+import 'login.dart';
+import 'signup.dart';
+import 'package:flutter_app/MyHomePage.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() => runApp(MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   @override
@@ -13,81 +18,14 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(),
+      home: login(),
+        routes: {
+        '/signup':(context) => signup(),
+        '/MyHomePage':(context) => MyHomePage(),
+        },
     );
   }
 }
 
 
-class MyHomePage extends StatefulWidget {
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
 
-class _MyHomePageState extends State<MyHomePage> {
-
-  String barcode = "";
-
-  Future scanCode() async {
-    try {
-      String barcode = await BarcodeScanner.scan();
-      setState(() => this.barcode = barcode);
-    } catch (e) {
-      if (e.code == BarcodeScanner.CameraAccessDenied) {
-        setState(() {
-          this.barcode = 'The user did not grant the camera permission!';
-        });
-      } else {
-        setState(() => this.barcode = 'Unknown error: $e');
-      }
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    var mainAxisAlignment;
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('BarCode Scanner'),
-        centerTitle: true,
-      ),
-      body: new Center(
-        child: new Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-              child: RaisedButton(
-                color: Colors.purple,
-                textColor: Colors.white,
-                splashColor: Colors.blueGrey,
-                padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-                onPressed: scanCode,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Icon(Icons.scanner, size: 40,),
-                    SizedBox(width: 10,),
-                    Column(
-                      children: <Widget>[
-                        Text('Camera Scan', style: TextStyle(fontSize: 20.0),),
-                        SizedBox(height: 10,),
-                        Text("Click here to Scan")
-                      ],
-                    )
-                  ],
-                ),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-              child: Text(barcode, textAlign: TextAlign.center,),
-            )
-          ],
-        ),
-      ),
-        drawer: new Draweronly(),
-    );
-  }
-}

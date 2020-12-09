@@ -25,8 +25,10 @@ dependencies:
       sdk: flutter
   barcode_scan: ^1.0.0
   flutter_launcher_icons: ^0.7.2
-
-  # The following adds the Cupertino Icons font to your application.
+  firebase_auth: ^0.18.4+1
+  firebase_core: ^0.5.3
+  cloud_firestore: ^0.14.4
+ # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.0
 flutter_icons:
@@ -37,7 +39,6 @@ flutter_icons:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
