@@ -4,6 +4,8 @@ import './drawer.dart';
 import 'dart:async';
 import 'package:flutter/cupertino.dart';
 
+String value = "";
+
 class MyHomePage extends StatefulWidget {
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -12,7 +14,6 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
 
   String barcode = "";
-
   Future scanCode() async {
     try {
       String barcode = await BarcodeScanner.scan();
@@ -28,9 +29,20 @@ class _MyHomePageState extends State<MyHomePage> {
     }
   }
 
+  void checkcode(){
+    var myList = ['1122334455', '987654321', '123456789'];
+
+    var element = value;
+
+    if(myList.contains(element)){
+      print('product is genuine');
+    } else {
+      print('product is fake');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    var mainAxisAlignment;
     return Scaffold(
       appBar: AppBar(
         title: Text('BarCode Scanner'),
@@ -41,9 +53,31 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
+            Container(
+                width: 200,
+                child: TextField(
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'Enter BarCode Here',
+                    hintText: 'Enter BarCode Here',
+
+                  ),
+                  onChanged: (text) {
+                    value = text;
+                  },
+                  autofocus: false,
+                )
+            ),
+            Container(
+              margin: EdgeInsets.all(25),
+              child: FlatButton(
+                child: Text('check the barcode', style: TextStyle(fontSize: 20.0),),
+                onPressed: () => checkcode(),
+              ),
+            ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-              child: RaisedButton(
+            child: RaisedButton(
                 color: Colors.purple,
                 textColor: Colors.white,
                 splashColor: Colors.blueGrey,
@@ -76,3 +110,23 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
+
+/*class checkbarcode extends StatelessWidget {
+  List<String> barcodes = <String>['1122334455', '987654321', '123456789'];
+
+  bool isPresent(String code) {
+    return barcodes.contains(code);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Column(
+      children: <Widget>[
+        if(isPresent(value))
+          Text("The code is genuine"),
+      ],
+    );
+  }
+}
+*/
