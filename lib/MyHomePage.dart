@@ -35,7 +35,7 @@ class _MyHomePageState extends State<MyHomePage> {
     var element = value;
 
     if(myList.contains(element)){
-      print('product is genuine');
+      print('product is genuine ==>  MADE IN INDIA');
     } else {
       print('product is fake');
     }
