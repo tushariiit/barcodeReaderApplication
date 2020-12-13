@@ -30,7 +30,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void checkcode(){
-    var myList = ['1122334455', '987654321', '123456789'];
+    var myList = ['1122334455', '987654321', '1234567890'];
 
     var element = value;
 
@@ -53,31 +53,9 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            Container(
-                width: 200,
-                child: TextField(
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: 'Enter BarCode Here',
-                    hintText: 'Enter BarCode Here',
-
-                  ),
-                  onChanged: (text) {
-                    value = text;
-                  },
-                  autofocus: false,
-                )
-            ),
-            Container(
-              margin: EdgeInsets.all(25),
-              child: FlatButton(
-                child: Text('check the barcode', style: TextStyle(fontSize: 20.0),),
-                onPressed: () => checkcode(),
-              ),
-            ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-            child: RaisedButton(
+              child: RaisedButton(
                 color: Colors.purple,
                 textColor: Colors.white,
                 splashColor: Colors.blueGrey,
@@ -102,7 +80,29 @@ class _MyHomePageState extends State<MyHomePage> {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
               child: Text(barcode, textAlign: TextAlign.center,),
-            )
+            ),
+            Container(
+                width: 200,
+                child: TextField(
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'Enter BarCode Here',
+                    hintText: 'Enter BarCode Here',
+
+                  ),
+                  onChanged: (text) {
+                    value = text;
+                  },
+                  autofocus: false,
+                )
+            ),
+            Container(
+              margin: EdgeInsets.all(25),
+              child: FlatButton(
+                child: Text('Check the Barcode', style: TextStyle(fontSize: 20.0),),
+                onPressed: () => checkcode(),
+              ),
+            ),
           ],
         ),
       ),
