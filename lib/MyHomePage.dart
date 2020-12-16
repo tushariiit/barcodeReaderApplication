@@ -35,10 +35,13 @@ class _MyHomePageState extends State<MyHomePage> {
     var element = value;
 
     if(myList.contains(element)){
-      print('product is genuine ==>  MADE IN INDIA');
+      //print('product is genuine ==>  MADE IN INDIA');
       myList.remove(element);
+      Navigator.push(context, new MaterialPageRoute(builder: (ctxt) => new genuineResult()));
+
     } else {
-      print('product is fake');
+      //print('product is fake');
+      Navigator.push(context, new MaterialPageRoute(builder: (ctxt) => new fakeResult()));
     }
   }
 
@@ -112,22 +115,26 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
-/*class checkbarcode extends StatelessWidget {
-  List<String> barcodes = <String>['1122334455', '987654321', '123456789'];
-
-  bool isPresent(String code) {
-    return barcodes.contains(code);
-  }
-
+class genuineResult extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return Column(
-      children: <Widget>[
-        if(isPresent(value))
-          Text("The code is genuine"),
-      ],
+    return new Scaffold(
+      appBar: new AppBar(title: new Text("Results"),),
+      body: new Text("The product is genuine ==> made in india"),
     );
   }
+
 }
-*/
+
+class fakeResult extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return new Scaffold(
+      appBar: new AppBar(title: new Text("Results"),),
+      body: new Text("The product is fake"),
+    );
+  }
+
+}
